@@ -5,12 +5,13 @@ import { Camera } from "@capacitor/camera";
 import { Directory, Filesystem } from "@capacitor/filesystem";
 import { TextRecognition } from "@capacitor-mlkit/text-recognition";
 import { CodeKeypad } from "./components/CodeKeypad";
+import { SortSelect } from "./components/SortSelect";
 import { CodeList } from "./components/CodeList";
 import { MapView } from "./components/MapView";
 import { SHOW_DEBUG_UI } from "./debug";
 import { parsePlate } from "./plate";
 import { progressStore } from "./progress";
-import type { ProgressOut } from "./types";
+import type { ProgressOut, SortMode } from "./types";
 import { parseSpokenCode } from "./voice";
 
 function CloseIcon() {
@@ -29,7 +30,7 @@ function CloseIcon() {
 
 export function App() {
   const [progress, setProgress] = useState<ProgressOut>(() => progressStore.getProgress());
-  const [showCompleted, setShowCompleted] = useState(false);
+  const [sortMode, setSortMode] = useState<SortMode>("district");
   const [showMap, setShowMap] = useState(true);
   const [filter, setFilter] = useState("");
   const [showKeypad, setShowKeypad] = useState(false);
@@ -160,14 +161,7 @@ export function App() {
             <span>{percent}% закрыто</span>
           </div>
           <div className="toggles-row">
-            <label className="hide-completed-toggle">
-              <input
-                type="checkbox"
-                checked={showCompleted}
-                onChange={(e) => setShowCompleted(e.target.checked)}
-              />
-              Закрытые регионы
-            </label>
+            <SortSelect value={sortMode} onChange={setSortMode} />
             <label className="hide-completed-toggle">
               <input
                 type="checkbox"
@@ -188,7 +182,7 @@ export function App() {
         <CodeList
           regions={progress.regions}
           onToggleCode={handleToggleCode}
-          showCompleted={showCompleted}
+          sortMode={sortMode}
           filter={filter}
         />
       </main>

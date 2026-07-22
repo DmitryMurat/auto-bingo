@@ -1,3 +1,5 @@
+export type SortMode = "district" | "alphabetical" | "code";
+
 export interface CodeOut {
   code: string;
   found: boolean;

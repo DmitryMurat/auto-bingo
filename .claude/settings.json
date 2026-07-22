@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp app-debug.apk app-debug-*)",
+      "Bash(cd \"/Users/dmitrymurat/Documents/Claude/Авто-бинго/frontend/android/app/build/outputs/apk/debug\" && *)"
+    ]
+  }
+}

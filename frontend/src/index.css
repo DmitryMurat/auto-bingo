@@ -124,7 +124,7 @@ input[type="checkbox"]:focus-visible {
 .sort-select {
   position: relative;
   font-size: 0.9rem;
-  width: 194px;
+  width: 160px;
 }
 
 .sort-select-trigger {

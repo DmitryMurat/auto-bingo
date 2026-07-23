@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import type { SortMode } from "../types";
 
 const OPTIONS: { value: SortMode; label: string }[] = [
-  { value: "district", label: "Федеральные округа" },
-  { value: "alphabetical", label: "Алфавитный порядок" },
-  { value: "code", label: "Коды регионов" },
+  { value: "district", label: "По округам" },
+  { value: "alphabetical", label: "По алфавиту" },
+  { value: "code", label: "По кодам" },
 ];
 
 interface Props {
